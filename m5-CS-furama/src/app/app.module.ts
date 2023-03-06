@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { HeadComponent } from './head/head.component';
 import { FooterComponent } from './footer/footer.component';
 import { FacilityComponent } from './facility/facility.component';
+import { FacilityCreateComponent } from './facility-create/facility-create.component';
+import { FacilityUpdateComponent } from './facility-update/facility-update.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { FacilityComponent } from './facility/facility.component';
     HeaderComponent,
     HeadComponent,
     FooterComponent,
-    FacilityComponent
+    FacilityComponent,
+    FacilityCreateComponent,
+    FacilityUpdateComponent
   ],
   imports: [
     BrowserModule,
