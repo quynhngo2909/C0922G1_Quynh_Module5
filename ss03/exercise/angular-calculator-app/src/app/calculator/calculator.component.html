@@ -1,0 +1,22 @@
+<div class="text-center">
+  <h2 class="text-center">SIMPLE CALCULATOR</h2>
+  <label>
+    Number 1:
+    <input type="number" [(ngModel)]="num1">
+  </label>
+  <label>
+    Number 2:
+    <input type="number" [(ngModel)]="num2">
+  </label>
+  <br>
+  <br>
+  <button class="btn btn-outline-info btn-sm" (click)="add()">Add</button>
+  <button class="btn btn-outline-info btn-sm" (click)="sub()">Sub</button>
+  <button class="btn btn-outline-info btn-sm" (click)="multiply()">Multiply</button>
+  <button class="btn btn-outline-info btn-sm" (click)="divide()">Divide</button>
+  <br>
+  <p>Result: {{num3}}</p>
+  <p>{{mess}}</p>
+
+
+</div>
