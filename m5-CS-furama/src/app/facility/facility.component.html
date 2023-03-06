@@ -1,0 +1,44 @@
+<div class="container d-flex justify-content-between mt-1">
+  <a role="button" class="btn btn-secondary btn-sm " href="/facilities/create-facility">New Facility</a>
+  <form method="get" action="/facilities" class="d-flex">
+    <input name="name" placeholder="Facility's name">
+    <input name="facilityType" placeholder="Facility's type">
+    <button type="submit" class="btn btn-secondary btn-sm">Search</button>
+  </form>
+</div>
+<div style="color: blue; font-weight: bold"></div>
+<h2 class="text-center">FACILITY LIST</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="row" hidden>ID</th>
+    <th scope="row">Name</th>
+    <th scope="row">Facility Type</th>
+    <th scope="row">Rent Type</th>
+    <th scope="row">Area</th>
+    <th scope="row">Cost</th>
+    <th scope="row">Max People</th>
+    <th scope="row" hidden>Standard Room</th>
+    <th scope="row">Description</th>
+    <th scope="row" hidden>Pool Area</th>
+    <th scope="row">Number of Floor</th>
+    <th scope="row">Facility Free</th>
+    <th scope="row"></th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<div class="text-center">
+  <a role="button" class="btn btn-sm btn-success">
+    <i class="fas fa-arrow-left btn-sm"></i>
+  </a>
+  <span></span>
+  <span>/</span>
+  <span></span>
+  <a role="button" class="btn btn-sm btn-success">
+    <i class="fas fa-arrow-right"></i>
+  </a>
+</div>
+
