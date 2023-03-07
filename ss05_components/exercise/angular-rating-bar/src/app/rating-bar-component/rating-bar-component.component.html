@@ -1,0 +1,6 @@
+<h2>Rating Bar</h2>
+<span></span>
+<div *ngFor="let rate of rateBar" class="btn-group">
+  <button [style.backgroundColor]="rate.active" class="btn mx-1" [value]="rate.value" (click)="selectRate(rate.value)" >{{rate.value}}</button>
+</div>
+
