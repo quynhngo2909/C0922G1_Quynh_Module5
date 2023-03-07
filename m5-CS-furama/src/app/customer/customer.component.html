@@ -1,0 +1,39 @@
+<div class="row bg-gradient">
+  <div class="col-sm-1 col-md-3 text-start">
+    <a href="/customers/create-customer"  role="button" class="btn btn-primary btn-sm">Create new customers</a>
+  </div>
+  <form class="col-sm-1 col-md-9 text-end" method="get" action="/customers">
+    <input name="name" placeholder="Input customer's name">
+    <input name="email"  placeholder="Input customer's email">
+    <input name="customerTypeName" placeholder="Input customer's type">
+    <button type="submit" id="btnSearchCustomers" class="btn btn-primary btn-sm">Search</button>
+  </form>
+</div>
+<div style="color: blue; font-weight: bold"></div>
+<h4 class="d-flex  justify-content-center">CUSTOMER LIST</h4>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="row" hidden>ID</th>
+    <th scope="row">Name</th>
+    <th scope="row">Birthday</th>
+    <th scope="row">Gender</th>
+    <th scope="row">ID Card</th>
+    <th scope="row">Phone Number</th>
+    <th scope="row">Email</th>
+    <th scope="row">Address</th>
+    <th scope="row">Customer Type</th>
+    <th scope="row"></th>
+    <th scope="row"></th>
+  </tr>
+  </thead>
+  <tbody id="tBody">
+  </tbody>
+</table>
+<div class="text-center">
+  <a role="button" class="btn btn-success btn-sm"> <i class="fas fa-arrow-left btn-sm"></i></a>
+  <span></span>
+  <span>/</span>
+  <span></span>
+  <a role="button" class="btn btn-success btn-sm"><i class="fas fa-arrow-right"></i></a>
+</div>
