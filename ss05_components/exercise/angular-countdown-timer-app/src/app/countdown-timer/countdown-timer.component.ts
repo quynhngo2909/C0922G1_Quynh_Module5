@@ -7,8 +7,9 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CountdownTimerComponent implements OnInit {
   timePoint = 10;
-  time = this.timePoint;
+  remainingTime = this.timePoint;
   mess: string;
+  interval = 0;
 
   constructor() {
   }
@@ -17,19 +18,23 @@ export class CountdownTimerComponent implements OnInit {
   }
 
   startTime() {
-    let interval = setInterval(() => {
-      this.time = this.time - 1;
-      if (this.time === 0) {
-        clearInterval(interval);
+   this.interval = setInterval(() => {
+      this.remainingTime = this.remainingTime - 1;
+      if (this.remainingTime === 0) {
+        this.clearTime();
         this.mess = 'Time out';
       }
     }, 1000);
   }
 
+  clearTime() {
+    clearInterval(this.interval);
+  }
   stopTime() {
+    this.clearTime();
   }
 
   resetTime() {
-    this.time = this.timePoint;
+    this.remainingTime = this.timePoint;
   }
 }
