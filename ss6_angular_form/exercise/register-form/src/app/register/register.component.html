@@ -1,0 +1,117 @@
+<h3 class="text-center">Register Form</h3>
+<form [formGroup]="contactFrom" class="form-control" (ngSubmit)="submit()" novalidate>
+  <p>
+    <label for="email" class="col-2">Email </label>
+    <input type="email" id="email" name="email" class="col-3" formControlName="email" required>
+    <ng-container *ngIf="!email?.valid && (email.dirty || email.touched )">
+      <div [hidden]="!email.errors.required" style="color: red">
+        Email is required.
+      </div>
+      <div [hidden]="!email.errors.email" style="color: red">
+        Email is not in format.
+      </div>
+    </ng-container>
+  </p>
+  <p>
+    <label for="password" class="col-2">Password </label>
+    <input type="password" id="password" #pw name="password" min="6" class="col-3" formControlName="password" required>
+  <span>{{passwordCheck}}</span>
+  <ng-container *ngIf="!password?.valid && (password.dirty || password.touched)">
+    <div [hidden]="!password.errors.required" style="color: red">
+      Password is required.
+    </div>
+    <div [hidden]="!password.errors.minlength" style="color: red">
+      Password's min length is 6.
+    </div>
+  </ng-container>
+  </p>
+  <p>
+    <label for="confirmPassword" class="col-2">Confirm Password </label>
+    <input type="password" id="confirmPassword" #cpw name="confirmPassword" min="6" class="col-3"
+           formControlName="confirmPassword" required>
+    <span>{{passwordCheck}}</span>
+    <ng-container *ngIf="!confirmPassword?.valid && (confirmPassword.dirty || confirmPassword.touched)">
+      <div [hidden]="!confirmPassword.errors.required" style="color: red">
+        Confirm Password is required.
+      </div>
+      <div [hidden]="!confirmPassword.errors.minLength" style="color: red">
+        Confirm Password's min length is 6.
+      </div>
+    </ng-container>
+  </p>
+  <p>
+    <label for="country" class="col-2">Country </label>
+    <select id="country" name="country" class="col-3" formControlName="country">
+      <option *ngFor="let c of countries" [ngValue]="c.id">{{c.name}}</option>
+    </select>
+    <br>
+    <ng-container *ngIf="!country?.valid && (country.dirty || country.touched)">
+      <div [hidden]="country.errors.required" style="color: red">
+        Country is required.
+      </div>
+    </ng-container>
+  </p>
+  <p>
+    <label for="age" class="col-2">Age </label>
+    <input type="number" id="age" name="age" class="col-3" formControlName="age" required>
+    <ng-container *ngIf="!age?.valid && (age.dirty || age.touched)">
+      <div [hidden]="!age.errors.required" style="color: red">
+        Age is required.
+      </div>
+      <div [hidden]="!age.errors.min" style="color: red">
+        Age must be over 18.
+      </div>
+    </ng-container>
+  </p>
+  <p>
+    <label for="gender" class="col-2">Gender </label>
+    <input type="radio" value="male" id="gender" name="gender" formControlName="gender">Male
+    <input type="radio" value="female" id="gender" name="gender" formControlName="gender">Female
+    <ng-container *ngIf="!gender?.valid && (gender.dirty || gender.touched)">
+      <div [hidden]="gender.errors.required" style="color: red">
+        Gender is required.
+      </div>
+    </ng-container>
+  </p>
+  <p>
+  <p>
+    <label for="phone" class="col-2">Phone </label>
+    <input type="text" id="phone" name="phone" class="col-3" formControlName="phone" required>
+    <ng-container *ngIf="!phone?.valid && (phone.dirty || phone.touched)">
+      <div [hidden]="!phone.errors.required" style="color: red">
+        Phone is required.
+      </div>
+      <div [hidden]="!phone.errors.pattern" style="color: red">
+        Phone must be in format +84xxxxxxxxx or +84xxxxxxxxxx.
+      </div>
+    </ng-container>
+  </p>
+  <p>
+    <label for="isMarried" class="col-2">Is Married </label>
+    <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried">
+  </p>
+  <div formGroupName="address">
+    <div>
+      <label for="city" class="col-2">City </label>
+      <input type="text" id="city" name="city" class="col-3" formControlName="city" required>
+      <ng-container *ngIf="!city?.valid && (city.dirty || city.touched)">
+        <div [hidden]="!city.errors.required" style="color: red">
+          City is required.
+        </div>
+      </ng-container>
+    </div>
+    <div>
+      <label for="street" class="col-2">Street </label>
+      <input type="text" id="street" name="street" class="col-3" formControlName="street" required>
+      <ng-container *ngIf="!street?.valid && (street.dirty || street.touched)">
+        <div [hidden]="!street.errors.required" style="color: red">
+          Street is required.
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <p>
+    <button type="submit" class="btn btn-primary" [disabled]="!contactFrom.valid" (click)="checkPassword(pw.value, cpw.value)">Submit
+    </button>
+  </p>
+</form>
