@@ -1,5 +1,5 @@
 <h3 class="text-center">Register Form</h3>
-<form [formGroup]="contactFrom" class="form-control" (ngSubmit)="submit()" novalidate>
+<form [formGroup]="registerForm" class="form-control" (ngSubmit)="submit()" novalidate>
   <p>
     <label for="email" class="col-2">Email </label>
     <input type="email" id="email" name="email" class="col-3" formControlName="email" required>
@@ -14,28 +14,30 @@
   </p>
   <p>
     <label for="password" class="col-2">Password </label>
-    <input type="password" id="password" #pw name="password" min="6" class="col-3" formControlName="password" required>
-  <span>{{passwordCheck}}</span>
-  <ng-container *ngIf="!password?.valid && (password.dirty || password.touched)">
-    <div [hidden]="!password.errors.required" style="color: red">
-      Password is required.
-    </div>
-    <div [hidden]="!password.errors.minlength" style="color: red">
-      Password's min length is 6.
-    </div>
-  </ng-container>
+    <input type="password" id="password" name="password" class="col-3" formControlName="password"
+           required>
+    <ng-container *ngIf="!password?.valid && (password.dirty || password.touched)">
+      <div [hidden]="!password.errors.required" style="color: red">
+        Password is required.
+      </div>
+      <div [hidden]="!password.errors.minlength" style="color: red">
+        Password's min length is 6.
+      </div>
+    </ng-container>
   </p>
   <p>
     <label for="confirmPassword" class="col-2">Confirm Password </label>
-    <input type="password" id="confirmPassword" #cpw name="confirmPassword" min="6" class="col-3"
+    <input type="password" id="confirmPassword" name="confirmPassword" min="6" class="col-3"
            formControlName="confirmPassword" required>
-    <span>{{passwordCheck}}</span>
     <ng-container *ngIf="!confirmPassword?.valid && (confirmPassword.dirty || confirmPassword.touched)">
       <div [hidden]="!confirmPassword.errors.required" style="color: red">
         Confirm Password is required.
       </div>
-      <div [hidden]="!confirmPassword.errors.minLength" style="color: red">
+      <div [hidden]="!confirmPassword.errors.minlength" style="color: red">
         Confirm Password's min length is 6.
+      </div>
+      <div [hidden]="!confirmPassword.errors.notMatchPassword" style="color: red">
+        Confirm Password must be same with password.
       </div>
     </ng-container>
   </p>
@@ -111,7 +113,8 @@
     </div>
   </div>
   <p>
-    <button type="submit" class="btn btn-primary" [disabled]="!contactFrom.valid" (click)="checkPassword(pw.value, cpw.value)">Submit
+    <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Submit
     </button>
   </p>
 </form>
+

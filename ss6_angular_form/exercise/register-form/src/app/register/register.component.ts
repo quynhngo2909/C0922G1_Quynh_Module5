@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {ICountry} from '../icountry';
 
 @Component({
@@ -8,7 +8,6 @@ import {ICountry} from '../icountry';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  passwordCheck = '';
   countries: ICountry[] = [
     {
       id: 1,
@@ -23,10 +22,12 @@ export class RegisterComponent implements OnInit {
       name: 'JP',
     },
   ];
-  contactFrom = new FormGroup({
+  
+  registerForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6),
+    this.checkConfirmPassword.bind(this)]),
     country: new FormControl('', [Validators.required]),
     age: new FormControl('', [Validators.required, Validators.min(19)]),
     gender: new FormControl('', [Validators.required]),
@@ -39,40 +40,40 @@ export class RegisterComponent implements OnInit {
   });
 
   get email() {
-    return this.contactFrom.get('email');
+    return this.registerForm.get('email');
   }
 
   get password() {
-    return this.contactFrom.get('password');
+    return this.registerForm.get('password');
   }
 
   get confirmPassword() {
-    return this.contactFrom.get('confirmPassword');
+    return this.registerForm.get('confirmPassword');
   }
 
   get country() {
-    return this.contactFrom.get('country');
+    return this.registerForm.get('country');
   }
 
   get age() {
-    return this.contactFrom.get('age');
+    return this.registerForm.get('age');
   }
 
   get gender() {
-    return this.contactFrom.get('gender');
+    return this.registerForm.get('gender');
   }
 
   get phone() {
-    return this.contactFrom.get('phone');
+    return this.registerForm.get('phone');
   }
 
 
   get city() {
-    return this.contactFrom.get('address').get('city');
+    return this.registerForm.get('address').get('city');
   }
 
   get street() {
-    return this.contactFrom.get('address').get('street');
+    return this.registerForm.get('address').get('street');
   }
 
   constructor() {
@@ -82,15 +83,12 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-      console.log(this.contactFrom.value);
+    console.log(this.registerForm.value);
   }
 
-  checkPassword(pw: string, cpw: string) {
-    if (pw === cpw) {
-      this.passwordCheck = 'Password and Confirm Password must be the same.';
-      return false;
-    } else {
-      return true;
+  checkConfirmPassword(fg: AbstractControl) {
+    if (this.registerForm) {
+      return fg.value === this.registerForm.controls.password.value ? null : {notMatchPassword: 'Not match'};
     }
   }
 }
