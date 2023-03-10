@@ -22,22 +22,8 @@ export class RegisterComponent implements OnInit {
       name: 'JP',
     },
   ];
-  
-  registerForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6),
-    this.checkConfirmPassword.bind(this)]),
-    country: new FormControl('', [Validators.required]),
-    age: new FormControl('', [Validators.required, Validators.min(19)]),
-    gender: new FormControl('', [Validators.required]),
-    phone: new FormControl('', [Validators.required, Validators.pattern('^\\+84[0-9]{9,10}$')]),
-    isMarried: new FormControl(),
-    address: new FormGroup({
-      city: new FormControl('', [Validators.required]),
-      street: new FormControl('', [Validators.required]),
-    }),
-  });
+
+  registerForm: FormGroup;
 
   get email() {
     return this.registerForm.get('email');
@@ -80,6 +66,21 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.registerForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6),
+        this.checkConfirmPassword.bind(this)]),
+      country: new FormControl('', [Validators.required]),
+      age: new FormControl('', [Validators.required, Validators.min(19)]),
+      gender: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required, Validators.pattern('^\\+84[0-9]{9,10}$')]),
+      isMarried: new FormControl(),
+      address: new FormGroup({
+        city: new FormControl('', [Validators.required]),
+        street: new FormControl('', [Validators.required]),
+      }),
+    });
   }
 
   submit() {

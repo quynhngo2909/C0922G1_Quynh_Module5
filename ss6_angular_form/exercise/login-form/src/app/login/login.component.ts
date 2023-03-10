@@ -29,5 +29,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.mess = 'Login successfully.';
+    console.log(this.loginContent.value);
   }
 }
