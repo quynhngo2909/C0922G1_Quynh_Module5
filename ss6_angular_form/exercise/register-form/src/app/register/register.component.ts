@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 import {ICountry} from '../icountry';
 
 @Component({
@@ -24,6 +24,27 @@ export class RegisterComponent implements OnInit {
   ];
 
   registerForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+
+  }
+
+  ngOnInit(): void {
+    this.registerForm = this.fb.group({
+        email: ['', Validators.compose([Validators.required, Validators.email])],
+        password: ['', Validators.compose([Validators.required, Validators.minLength(6),
+          Validators.pattern('^[a-wA-W0-9]*$')])],
+        confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+        country: ['', Validators.compose([Validators.required])],
+        age: ['', Validators.compose([Validators.required, Validators.min(19)])],
+        gender: ['', Validators.compose([Validators.required])],
+        phone: ['', Validators.compose([Validators.required, Validators.pattern('^\\+84[0-9]{9,10}$')])],
+        isMarried: '',
+      },
+      {
+        validators: this.checkConfirmPassword,
+      });
+  }
 
   get email() {
     return this.registerForm.get('email');
@@ -62,34 +83,31 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('address').get('street');
   }
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-    this.registerForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6),
-        this.checkConfirmPassword.bind(this)]),
-      country: new FormControl('', [Validators.required]),
-      age: new FormControl('', [Validators.required, Validators.min(19)]),
-      gender: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required, Validators.pattern('^\\+84[0-9]{9,10}$')]),
-      isMarried: new FormControl(),
-      address: new FormGroup({
-        city: new FormControl('', [Validators.required]),
-        street: new FormControl('', [Validators.required]),
-      }),
-    });
-  }
 
   submit() {
     console.log(this.registerForm.value);
   }
 
-  checkConfirmPassword(fg: AbstractControl) {
-    if (this.registerForm) {
-      return fg.value === this.registerForm.controls.password.value ? null : {notMatchPassword: 'Not match'};
-    }
+
+  checkConfirmPassword(fg: FormGroup) {
+    return fg.controls?.confirmPassword?.value === fg.controls?.password?.value ? null : {notMatchPassword: 'Not match'};
   }
+
+  readonly validateMatchedControlsValue = (
+    firstControlName: string,
+    secondControlName: string
+  ) => {
+    return (formGroup: FormGroup): ValidationErrors | null => {
+      const {value: firstControlValue} = formGroup.get(
+        firstControlName
+      ) as AbstractControl;
+      const {value: secondControlValue} = formGroup.get(
+        secondControlName
+      ) as AbstractControl;
+      return firstControlValue === secondControlValue
+        ? null
+        : {notMatchPassword: 'Not match'};
+    };
+  }
+
 }

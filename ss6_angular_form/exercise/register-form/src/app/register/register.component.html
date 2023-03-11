@@ -36,11 +36,11 @@
       <div [hidden]="!confirmPassword.errors.minlength" style="color: red">
         Confirm Password's min length is 6.
       </div>
-      <div [hidden]="!confirmPassword.errors.notMatchPassword" style="color: red">
-        Confirm Password must be same with password.
-      </div>
     </ng-container>
   </p>
+  <div [hidden]="!registerForm.errors" style="color: red">
+    Confirm Password must be same with password.
+  </div>
   <p>
     <label for="country" class="col-2">Country </label>
     <select id="country" name="country" class="col-3" formControlName="country">
@@ -92,26 +92,26 @@
     <label for="isMarried" class="col-2">Is Married </label>
     <input type="checkbox" id="isMarried" name="isMarried" formControlName="isMarried">
   </p>
-  <div formGroupName="address">
-    <div>
-      <label for="city" class="col-2">City </label>
-      <input type="text" id="city" name="city" class="col-3" formControlName="city" required>
-      <ng-container *ngIf="!city?.valid && (city.dirty || city.touched)">
-        <div [hidden]="!city.errors.required" style="color: red">
-          City is required.
-        </div>
-      </ng-container>
-    </div>
-    <div>
-      <label for="street" class="col-2">Street </label>
-      <input type="text" id="street" name="street" class="col-3" formControlName="street" required>
-      <ng-container *ngIf="!street?.valid && (street.dirty || street.touched)">
-        <div [hidden]="!street.errors.required" style="color: red">
-          Street is required.
-        </div>
-      </ng-container>
-    </div>
-  </div>
+  <!--  <div formGroupName="address">-->
+  <!--    <div>-->
+  <!--      <label for="city" class="col-2">City </label>-->
+  <!--      <input type="text" id="city" name="city" class="col-3" formControlName="city" required>-->
+  <!--      <ng-container *ngIf="!city?.valid && (city.dirty || city.touched)">-->
+  <!--        <div [hidden]="!city.errors.required" style="color: red">-->
+  <!--          City is required.-->
+  <!--        </div>-->
+  <!--      </ng-container>-->
+  <!--    </div>-->
+  <!--    <div>-->
+  <!--      <label for="street" class="col-2">Street </label>-->
+  <!--      <input type="text" id="street" name="street" class="col-3" formControlName="street" required>-->
+  <!--      <ng-container *ngIf="!street?.valid && (street.dirty || street.touched)">-->
+  <!--        <div [hidden]="!street.errors.required" style="color: red">-->
+  <!--          Street is required.-->
+  <!--        </div>-->
+  <!--      </ng-container>-->
+  <!--    </div>-->
+  <!--  </div>-->
   <p>
     <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Submit
     </button>
