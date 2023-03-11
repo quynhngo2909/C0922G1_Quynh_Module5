@@ -90,7 +90,9 @@ export class RegisterComponent implements OnInit {
 
 
   checkConfirmPassword(fg: FormGroup) {
-    return fg.controls?.confirmPassword?.value === fg.controls?.password?.value ? null : {notMatchPassword: 'Not match'};
+    return fg.controls.confirmPassword.value === fg.controls.password.value
+      ? null
+      : {notMatchPassword: 'Not match'};
   }
 
   readonly validateMatchedControlsValue = (

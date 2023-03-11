@@ -37,10 +37,12 @@
         Confirm Password's min length is 6.
       </div>
     </ng-container>
+    <ng-container *ngIf="!registerForm?.valid && (confirmPassword.dirty || confirmPassword.touched)">
+      <div [hidden]="!registerForm?.errors?.notMatchPassword" style="color: red">
+        Confirm Password must be same with password.
+      </div>
+    </ng-container>
   </p>
-  <div [hidden]="!registerForm.errors" style="color: red">
-    Confirm Password must be same with password.
-  </div>
   <p>
     <label for="country" class="col-2">Country </label>
     <select id="country" name="country" class="col-3" formControlName="country">
