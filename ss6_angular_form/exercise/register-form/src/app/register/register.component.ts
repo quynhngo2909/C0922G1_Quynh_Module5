@@ -74,16 +74,6 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('phone');
   }
 
-
-  get city() {
-    return this.registerForm.get('address').get('city');
-  }
-
-  get street() {
-    return this.registerForm.get('address').get('street');
-  }
-
-
   submit() {
     console.log(this.registerForm.value);
   }
