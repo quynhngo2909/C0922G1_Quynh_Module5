@@ -27,7 +27,19 @@
     <th scope="row"></th>
   </tr>
   </thead>
-  <tbody id="tBody">
+  <tbody *ngFor="let c of customers; index as i">
+  <td>{{i+ 1}}</td>
+  <td>{{c.name}}</td>
+  <td>{{c.birthday}}</td>
+  <td>{{c.gender}}</td>
+  <td>{{c.idCard}}</td>
+  <td>{{c.phoneNumber}}</td>
+  <td>{{c.email}}</td>
+  <td>{{c.email}}</td>
+  <td >{{c.address}}</td>
+  <td >{{c.customerType.name}}</td>
+  <td><button>Update</button></td>
+  <td><button>Delete</button></td>
   </tbody>
 </table>
 <div class="text-center">

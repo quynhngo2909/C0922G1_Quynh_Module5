@@ -23,10 +23,24 @@
     <th scope="row" hidden>Pool Area</th>
     <th scope="row">Number of Floor</th>
     <th scope="row">Facility Free</th>
-    <th scope="row"></th>
+    <th scope="row" colspan="2"></th>
   </tr>
   </thead>
-  <tbody>
+  <tbody *ngFor="let f of facilities; index as i">
+  <td>{{i+ 1}}</td>
+  <td>{{f.name}}</td>
+  <td>{{f.facilityType.name}}</td>
+  <td>{{f.rentType.name}}</td>
+  <td>{{f.area}}</td>
+  <td>{{f.cost}}</td>
+  <td>{{f.maxPeople}}</td>
+  <td hidden>{{f.standardRoom}}</td>
+  <td >{{f.descriptionOtherConvenience}}</td>
+  <td hidden>{{f.poolArea}}</td>
+  <td>{{f.numberOfFloor}}</td>
+  <td>{{f.facilityFree}}</td>
+  <td><button>Update</button></td>
+  <td><button>Delete</button></td>
   </tbody>
 </table>
 

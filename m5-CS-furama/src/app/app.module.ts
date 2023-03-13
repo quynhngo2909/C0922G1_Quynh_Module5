@@ -6,14 +6,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HeadComponent } from './head/head.component';
 import { FooterComponent } from './footer/footer.component';
-import { FacilityComponent } from './facility/facility.component';
-import { FacilityCreateComponent } from './facility-create/facility-create.component';
-import { FacilityUpdateComponent } from './facility-update/facility-update.component';
-import { CustomerComponent } from './customer/customer.component';
-import { CustomerCreateComponent } from './customer-create/customer-create.component';
-import { CustomerUpdateComponent } from './customer-update/customer-update.component';
-import { ContractComponent } from './contract/contract.component';
-import { ContractCreateComponent } from './contract-create/contract-create.component';
+import { FacilityListComponent } from './facility/facility-list/facility-list.component';
+import { FacilityCreateComponent } from './facility/facility-create/facility-create.component';
+import { FacilityUpdateComponent } from './facility/facility-update/facility-update.component';
+import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
+import { CustomerUpdateComponent } from './customer/customer-update/customer-update.component';
+import { ContractListComponent } from './contract/contract-list/contract-list..component';
+import { ContractCreateComponent } from './contract/contract-create/contract-create.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +21,13 @@ import { ContractCreateComponent } from './contract-create/contract-create.compo
     HeaderComponent,
     HeadComponent,
     FooterComponent,
-    FacilityComponent,
+    FacilityListComponent,
     FacilityCreateComponent,
     FacilityUpdateComponent,
-    CustomerComponent,
+    CustomerListComponent,
     CustomerCreateComponent,
     CustomerUpdateComponent,
-    ContractComponent,
+    ContractListComponent,
     ContractCreateComponent
   ],
   imports: [
