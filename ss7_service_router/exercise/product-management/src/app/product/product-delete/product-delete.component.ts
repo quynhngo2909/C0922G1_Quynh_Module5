@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Product} from '../../model/product';
 import {ProductService} from '../../service/product.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-delete',
@@ -17,7 +17,8 @@ export class ProductDeleteComponent implements OnInit {
 
   constructor(private  productService: ProductService,
               private fb: FormBuilder,
-              private activateRoute: ActivatedRoute) {
+              private activateRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -42,6 +43,7 @@ export class ProductDeleteComponent implements OnInit {
     this.productService.deleteById(product.id);
     this.mess = 'The product was deleted successfully.';
     this.productForm.reset();
+    this.router.navigateByUrl('');
   }
 
   get name() {

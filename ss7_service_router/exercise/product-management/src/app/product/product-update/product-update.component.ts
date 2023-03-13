@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../service/product.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Product} from '../../model/product';
 
 @Component({
@@ -16,7 +16,8 @@ export class ProductUpdateComponent implements OnInit {
   mess;
   constructor(private  productService: ProductService,
               private fb: FormBuilder,
-              private activateRoute: ActivatedRoute) { }
+              private activateRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.activateRoute.paramMap.subscribe((paramMap) => {
@@ -40,6 +41,7 @@ export class ProductUpdateComponent implements OnInit {
     this.productService.updateById(product.id, product);
     this.mess = 'The product was updated successfully.';
     this.productForm.reset();
+    this.router.navigateByUrl('');
   }
 
   get name() {

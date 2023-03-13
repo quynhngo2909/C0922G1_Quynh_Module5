@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../../service/product.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-create',
@@ -11,7 +12,8 @@ export class ProductCreateComponent implements OnInit {
   productForm: FormGroup;
 
   constructor(private productService: ProductService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
@@ -26,6 +28,7 @@ export class ProductCreateComponent implements OnInit {
     const product = this.productForm.value;
     this.productService.saveProduct(product);
     this.productForm.reset();
+    this.router.navigateByUrl('');
   }
 
   get name() {
