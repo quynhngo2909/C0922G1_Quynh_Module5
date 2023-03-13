@@ -1,0 +1,24 @@
+<nav>
+  <a routerLink="" class="mx-2 btn " >Home</a>
+  <a routerLink="/product/create" class="mx-2 btn">Create New</a>
+</nav>
+<h4>Danh sách sản phẩm</h4>
+<table class="table table-striped">
+  <tr>
+    <th scope="row">STT</th>
+    <th scope="row">Name</th>
+    <th scope="row">Price</th>
+    <th scope="row">Description</th>
+    <th scope="row"></th>
+  </tr>
+  <tr *ngFor="let p of products; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{p.name}}</td>
+    <td>{{p.price}}</td>
+    <td>{{p.description}}</td>
+    <td>
+      <a [routerLink]="['/product/update', p.id]" class="mx-2 btn" >Update</a>
+      <a [routerLink]="['/product/delete', p.id]" class="mx-2 btn">Delete</a>
+    </td>
+  </tr>
+</table>

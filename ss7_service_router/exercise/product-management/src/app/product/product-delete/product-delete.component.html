@@ -1,0 +1,33 @@
+<nav>
+  <a routerLink="" class="mx-2 btn " >Home</a>
+  <a routerLink="/product/create" class="mx-2 btn">Create New</a>
+</nav>
+<div style="color: red">{{mess}}</div>
+<h4>Product info</h4>
+<form [formGroup]="productForm" class="form-control" (ngSubmit)="submit()">
+  <table class="table table-striped">
+    <tr>
+      <td>Product Id</td>
+      <td><input formControlName="id" readonly></td>
+    </tr>
+    <tr>
+      <td>Product Name</td>
+      <td><input type="text" formControlName="name" readonly></td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td><input formControlName="price" readonly></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><input type="text" formControlName="description" readonly></td>
+    </tr>
+    <tr>
+    <tr>
+      <td></td>
+      <td>
+        <a role="button" routerLink="" class="btn btn-outline-primary mx-1" >Cancel</a>
+        <button class="btn btn-outline-primary" [disabled]="!productForm.valid">Delete</button></td>
+    </tr>
+  </table>
+</form>

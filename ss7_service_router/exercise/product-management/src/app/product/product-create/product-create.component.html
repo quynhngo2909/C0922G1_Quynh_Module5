@@ -1,0 +1,47 @@
+<nav>
+  <a routerLink="" class="mx-2 btn " >Home</a>
+  <a routerLink="/product/create" class="mx-2 btn">Create New</a>
+</nav>
+<h4>Create new product</h4>
+<form [formGroup]="productForm" class="form-control" (ngSubmit)="submit()">
+  <table class="table table-striped">
+    <tr>
+      <td>Product Id</td>
+      <td><input formControlName="id"></td>
+    </tr>
+    <ng-container *ngIf="!productForm.controls.id.valid && (productForm.controls.id?.touched || productForm.controls.id.dirty)">
+      <div style="color: red">ID is required.</div>
+    </ng-container>
+    <tr>
+      <td>Product Name</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <ng-container *ngIf="!name.valid && (name.touched || name.dirty)">
+      <div style="color: red" [hidden]="!name.errors.required">Product name is required.</div>
+      <div style="color: red" [hidden]="!name.errors.minlength">Min length: 10 characters.</div>
+      <div style="color: red" [hidden]="!name.errors.pattern">Product's name must not contain special characters.</div>
+    </ng-container>
+    <tr>
+      <td>Price</td>
+      <td><input formControlName="price"></td>
+    </tr>
+    <ng-container *ngIf="productForm.controls.price?.errors?.required && (productForm.controls.price.dirty || productForm.controls.price.touched)">
+      <div style="color: red">Price is required.</div>
+    </ng-container>
+    <ng-container *ngIf="productForm.controls.price?.errors?.pattern && (productForm.controls.price.dirty || productForm.controls.price.touched)">
+      <div style="color: red">Price contains only number</div>
+    </ng-container>
+    <tr>
+      <td>Description</td>
+      <td><input type="text" formControlName="description"></td>
+    </tr>
+    <ng-container *ngIf="!description.valid && (description.dirty || description.touched)">
+      <div style="color: red" [hidden]="!description.errors.required">Description is required.</div>
+    </ng-container>
+    <tr>
+    <tr>
+      <td></td>
+      <td><button class="btn btn-outline-primary" [disabled]="!productForm.valid">Create</button></td>
+    </tr>
+  </table>
+</form>

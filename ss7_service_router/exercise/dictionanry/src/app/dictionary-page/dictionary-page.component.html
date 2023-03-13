@@ -1,0 +1,7 @@
+<nav>
+  <a class="text-decoration-none" role="button" routerLink="">Home</a>
+</nav>
+<h4>Word List</h4>
+<ul *ngFor="let w of dictionary">
+  <li><a class="text-decoration-none" [routerLink]="['/dictionary/', w.word]">{{w.word}}</a></li>
+</ul>
